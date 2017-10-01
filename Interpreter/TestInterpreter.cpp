@@ -15,17 +15,17 @@
 /////////////////////////
 
 TEST(test_token, token_construct_1) {
-    Token<int> myToken(integer, 10);
+    Token<int> myToken(Integer, 10);
     ASSERT_EQ(myToken.toString(), "Token(INTEGER, 10)");
 }
 
 TEST(test_token, token_construct_2) {
-    Token<char> myToken(plus, '+');
+    Token<char> myToken(Plus, '+');
     ASSERT_EQ(myToken.toString(), "Token(PLUS, +)");
 }
 
 TEST(test_token, token_construct_3) {
-    Token<char> myToken(eof, std::char_traits<char>::eof());
+    Token<char> myToken(eof, EOF);
     ASSERT_EQ(myToken.toString(), "Token(EOF, None)");
 }
 
