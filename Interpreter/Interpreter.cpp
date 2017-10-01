@@ -11,5 +11,20 @@
 
 #include "Interpreter.hpp"
 
+Interpreter::Interpreter(std::string text) {
+    _text = text;
+    _pos = 0;
+}
+
+//void Interpreter::getNextToken() {
+//    if (_pos > _text.size() - 1) {
+//
+//    }
+//}
+
+void Interpreter::error() {
+    throw std::invalid_argument("Error parsing input");
+}
+
 #endif
 

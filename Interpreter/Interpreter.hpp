@@ -10,7 +10,24 @@
 #define Interpreter_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include "Token.hpp"
 
+class Interpreter {
+    // client string input, e.g. "3+5"
+    std::string _text;
+    // self.pos is an index into _text
+    int         _pos;
+
+public:
+    // Constructors
+    Interpreter(std::string text);
+    
+    void getNextToken();
+    void eat();
+    void error();
+};
 
 
 #include "Interpreter.cpp"
