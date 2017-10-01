@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20E253451F8159400081DD3A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253441F8159400081DD3A /* main.cpp */; };
+		20E253451F8159400081DD3A /* RunTestInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253441F8159400081DD3A /* RunTestInterpreter.cpp */; };
+		20E2534D1F815AD60081DD3A /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534B1F815AD60081DD3A /* Token.cpp */; };
+		20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534E1F815B0B0081DD3A /* Interpreter.cpp */; };
+		20E253521F815B320081DD3A /* TestInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253511F815B320081DD3A /* TestInterpreter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,12 @@
 
 /* Begin PBXFileReference section */
 		20E253411F8159400081DD3A /* Interpreter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interpreter; sourceTree = BUILT_PRODUCTS_DIR; };
-		20E253441F8159400081DD3A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		20E253441F8159400081DD3A /* RunTestInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RunTestInterpreter.cpp; sourceTree = "<group>"; };
+		20E2534B1F815AD60081DD3A /* Token.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
+		20E2534C1F815AD60081DD3A /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
+		20E2534E1F815B0B0081DD3A /* Interpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Interpreter.cpp; sourceTree = "<group>"; };
+		20E2534F1F815B0B0081DD3A /* Interpreter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interpreter.hpp; sourceTree = "<group>"; };
+		20E253511F815B320081DD3A /* TestInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestInterpreter.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +65,12 @@
 		20E253431F8159400081DD3A /* Interpreter */ = {
 			isa = PBXGroup;
 			children = (
-				20E253441F8159400081DD3A /* main.cpp */,
+				20E253441F8159400081DD3A /* RunTestInterpreter.cpp */,
+				20E2534B1F815AD60081DD3A /* Token.cpp */,
+				20E2534E1F815B0B0081DD3A /* Interpreter.cpp */,
+				20E2534F1F815B0B0081DD3A /* Interpreter.hpp */,
+				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
+				20E2534C1F815AD60081DD3A /* Token.hpp */,
 			);
 			path = Interpreter;
 			sourceTree = "<group>";
@@ -119,7 +132,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E253451F8159400081DD3A /* main.cpp in Sources */,
+				20E253521F815B320081DD3A /* TestInterpreter.cpp in Sources */,
+				20E253451F8159400081DD3A /* RunTestInterpreter.cpp in Sources */,
+				20E2534D1F815AD60081DD3A /* Token.cpp in Sources */,
+				20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +249,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = /usr/local/lib/libgtest.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -241,6 +260,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = /usr/local/lib/libgtest.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
