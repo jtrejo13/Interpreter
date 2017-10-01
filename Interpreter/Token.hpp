@@ -12,13 +12,39 @@
 #include <sstream>
 #include <string>
 
+enum type {integer, plus, eof};
+
+struct Type {
+    type t;
+    std::string toString() {
+        std::string ans;
+        switch(t) {
+            case integer:
+                ans = "INTEGER";
+                break;
+            case plus:
+                ans = "PLUS";
+                break;
+            case eof:
+                ans = "EOF";
+                break;
+            default:
+                ans = "UNDEF";
+                break;
+        }
+        return ans;
+    }
+};
+
 template <typename T>
 class Token {
-    T _value;
+    // token type: INTEGER, PLUS, or EOF
+    Type _type;
+    // token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', or None
+    T    _value;
 public:
     // Constructors
-    Token();
-    Token(T value);
+    Token(type t, T value);
     
     /* *
      * @brief String representation of the class instance.

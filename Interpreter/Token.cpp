@@ -12,12 +12,8 @@
 #include "Token.hpp"
 
 template <typename T>
-Token<T>::Token() {
-    _value = T();
-}
-
-template <typename T>
-Token<T>::Token(T value) {
+Token<T>::Token(type t, T value) {
+    _type = {t};
     _value = value;
 }
 
@@ -26,8 +22,12 @@ std::string Token<T>::toString()
 {
     std::ostringstream out;
     out << "Token(";
-    out << typeid(T).name();
-    out << ", " << _value << ")";
+    out << _type.toString();
+    if (_value != std::char_traits<char>::eof()) {
+        out << ", " << _value << ")";
+    } else {
+        out << ", None)";  // Handle eof
+    }
     return out.str();
 }
 
