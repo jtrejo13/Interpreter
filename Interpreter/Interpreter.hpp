@@ -19,22 +19,17 @@ class Interpreter {
     std::string _text;
     // self.pos is an index into _text
     int         _pos;
-    void*       _currentToken;
+    Token       _currentToken;
 
 public:
     // Constructors
     Interpreter(std::string text);
     
-    template <typename T>
-    Token<T>* getNextToken();
-    template <typename T>
+    Token getNextToken();
     void eat(TokenType t);
-    int expression();
+    int eval();
     void error();
 };
-
-
-#include "Interpreter.cpp"
 
 #endif /* Interpreter_hpp */
 

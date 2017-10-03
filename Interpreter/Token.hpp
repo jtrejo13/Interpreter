@@ -37,15 +37,15 @@ struct Type {
 };
 
 
-template <typename T>
 class Token {
     // token type: INTEGER, PLUS, or EOF
     Type _type;
     // token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', or None
-    T    _value;
+    char    _value;
 public:
     // Constructors
-    Token(TokenType t, T value);
+    Token();
+    Token(TokenType t, char value);
     
     /* *
      * @brief String representation of the class instance.
@@ -55,10 +55,19 @@ public:
      * Token(PLUS '+')
      */
     std::string toString();
+    
+    /* *
+     * @brief
+     * @return
+     */
     TokenType getTokenType();
+    
+    /* *
+     * @brief
+     * @return
+     */
+    char getValue();
 };
-
-#include "Token.cpp"
 
 #endif /* Token_hpp */
 

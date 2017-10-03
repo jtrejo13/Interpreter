@@ -11,18 +11,21 @@
 
 #include "Token.hpp"
 
-template <typename T>
-Token<T>::Token(TokenType t, T value) {
+Token::Token() {
+    _type = {eof};
+    _value = -1;
+}
+
+Token::Token(TokenType t, char value) {
     _type = {t};
     _value = value;
 }
 
-template <typename T>
-std::string Token<T>::toString() {
+std::string Token::toString() {
     std::ostringstream out;
     out << "Token(";
     out << _type.toString();
-    if (_value != EOF) {
+    if (_type.t != eof) {
         out << ", " << _value << ")";
     } else {
         out << ", None)";  // Handle eof
@@ -30,9 +33,12 @@ std::string Token<T>::toString() {
     return out.str();
 }
 
-template <typename T>
-TokenType Token<T>::getTokenType() {
+TokenType Token::getTokenType() {
     return _type.t;
+}
+
+char Token::getValue() {
+    return _value;
 }
 
 #endif

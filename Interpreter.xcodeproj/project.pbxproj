@@ -66,11 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				20E253441F8159400081DD3A /* RunTestInterpreter.cpp */,
-				20E2534B1F815AD60081DD3A /* Token.cpp */,
-				20E2534E1F815B0B0081DD3A /* Interpreter.cpp */,
-				20E2534F1F815B0B0081DD3A /* Interpreter.hpp */,
-				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
 				20E2534C1F815AD60081DD3A /* Token.hpp */,
+				20E2534B1F815AD60081DD3A /* Token.cpp */,
+				20E2534F1F815B0B0081DD3A /* Interpreter.hpp */,
+				20E2534E1F815B0B0081DD3A /* Interpreter.cpp */,
+				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
 			);
 			path = Interpreter;
 			sourceTree = "<group>";

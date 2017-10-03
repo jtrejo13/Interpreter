@@ -16,35 +16,45 @@ Interpreter::Interpreter(std::string text) {
     _pos = 0;
 }
 
-template <typename T>
-Token<T>* Interpreter::getNextToken() {
+Token Interpreter::getNextToken() {
     if (_pos > _text.size() - 1) {
-        return new Token<char>(eof, EOF);
+        return Token(eof, EOF);
     }
     
     char currentChar = _text[_pos];
     
     if (std::isdigit(currentChar)) {
         _pos += 1;
-        return new Token<int>(Integer, currentChar - '0');
-    }
-    
-    if (currentChar == '+') {
+        return Token(Integer, currentChar);
+    } else if (currentChar == '+') {
         _pos += 1;
-        return new Token<char>(Plus, currentChar);
+        return Token(Plus, currentChar);
+    } else {
+        error();
+        return Token();
     }
-    
-    error();
 }
 
-template <typename T>
 void Interpreter::eat(TokenType t) {
-    Token<T>* token = static_cast<Token<T>*>(_currentToken);
-    if (token->getTokenType() == t) {
-        _currentToken = getNextToken<T>();
+    if (_currentToken.getTokenType() == t) {
+        _currentToken = getNextToken();
     } else {
         error();
     }
+}
+
+int Interpreter::eval() {
+    _currentToken = getNextToken();
+    
+    int left = _currentToken.getValue() - '0';
+    eat(Integer);
+    
+    eat(Plus);
+    
+    int right = _currentToken.getValue() - '0';
+    eat(Integer);
+    
+    return left + right;
 }
 
 void Interpreter::error() {
