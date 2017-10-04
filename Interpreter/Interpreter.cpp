@@ -11,45 +11,61 @@
 
 #include "Interpreter.hpp"
 
+
 Interpreter::Interpreter(std::string text) {
-    _text = text;
-    _pos = 0;
+    _in = std::stringstream(text);
 }
 
 void Interpreter::skipWhitespace() {
-    while (_text[_pos] == ' ') {
-        ++_pos;
+    while (_in.peek() == ' ') {
+        _in.ignore();
     }
 }
 
-Token Interpreter::getNextToken() {
-    std::string currentChar = _text.substr(_pos, 1);
+std::string Interpreter::getIntegerStr() {
+    std::string res = "";
+    while(!_in.eof() && isdigit(_in.peek())){
+        res += _in.get();
+    }
+    return res;
+}
 
-    if (isInteger(currentChar)) {
-        _pos += 1;
-        return Token(Integer, currentChar);
-    } else if (currentChar[0] == '+') {
-        _pos += 1;
-        return Token(Plus, currentChar);
-    } else {
-        error();
+Token Interpreter::getNextToken() {
+    
+    while (!_in.eof()) {
+        if (_in.peek() == ' ') {
+            skipWhitespace();
+        }
+            
+        if (isdigit(_in.peek())) {
+            return Token(Integer, getIntegerStr());
+        }
+        
+        if (_in.peek() == '+') {
+            return Token(Plus, std::string(1, _in.get()));
+        }
+        
+        if (_in.peek() == '-') {
+            return Token(Plus, std::string(1, _in.get()));
+        }
     }
     return Token(eof, "EOF");
 }
 
-void Interpreter::eat(TokenType t) {
+void Interpreter::eat(TokenType T) {
     _currentToken = getNextToken();
-    if (_currentToken.getTokenType() != t) {
+    if (_currentToken.getTokenType() != T) {
         error();
     }
 }
+
 
 int Interpreter::eval() {
     eat(Integer);
     int left = stringToInteger(_currentToken.getValue());
     
     eat(Plus);
-
+    
     eat(Integer);
     int right = stringToInteger(_currentToken.getValue());
 

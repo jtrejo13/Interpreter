@@ -11,18 +11,16 @@
 
 #include <ctype.h>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include "Token.hpp"
 #include "strhelper.hpp"
 
 class Interpreter {
     // client string input, e.g. "3+5"
-    std::string _text;
-    // _pos is an index into _text
-    int         _pos;
-    
-    Token       _currentToken;
+    std::stringstream _in;
 
+    Token       _currentToken;
 
 public:
     // Constructors
@@ -31,6 +29,7 @@ public:
     Interpreter(std::string text);
     
     void skipWhitespace();
+    std::string getIntegerStr();
     Token getNextToken();
     void eat(TokenType t);
     int eval();
