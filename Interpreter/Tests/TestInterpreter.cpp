@@ -54,3 +54,8 @@ TEST(test_interp, interp_express_3) {
     ASSERT_EQ(myInterp.eval(), 0);
 }
 
+TEST(test_interp, interp_express_4) {
+    Interpreter myInterp("++0");
+    ASSERT_THROW(myInterp.eval(), std::invalid_argument);
+}
+

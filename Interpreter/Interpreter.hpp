@@ -18,14 +18,19 @@
 class Interpreter {
     // client string input, e.g. "3+5"
     std::string _text;
-    // self.pos is an index into _text
+    // _pos is an index into _text
     int         _pos;
+    
     Token       _currentToken;
+
 
 public:
     // Constructors
+//    Interpreter();
+//    Interpreter(std::istream& in);
     Interpreter(std::string text);
     
+    void skipWhitespace();
     Token getNextToken();
     void eat(TokenType t);
     int eval();

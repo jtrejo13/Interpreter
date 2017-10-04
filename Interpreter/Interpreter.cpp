@@ -16,11 +16,13 @@ Interpreter::Interpreter(std::string text) {
     _pos = 0;
 }
 
-Token Interpreter::getNextToken() {
-    if (_pos > _text.size() - 1) {
-        return Token(eof, "EOF");
+void Interpreter::skipWhitespace() {
+    while (_text[_pos] == ' ') {
+        ++_pos;
     }
-    
+}
+
+Token Interpreter::getNextToken() {
     std::string currentChar = _text.substr(_pos, 1);
 
     if (isInteger(currentChar)) {
@@ -31,29 +33,25 @@ Token Interpreter::getNextToken() {
         return Token(Plus, currentChar);
     } else {
         error();
-        return Token();
     }
-    return Token();
+    return Token(eof, "EOF");
 }
 
 void Interpreter::eat(TokenType t) {
-    if (_currentToken.getTokenType() == t) {
-        _currentToken = getNextToken();
-    } else {
+    _currentToken = getNextToken();
+    if (_currentToken.getTokenType() != t) {
         error();
     }
 }
 
 int Interpreter::eval() {
-    _currentToken = getNextToken();
-    
-    int left = stringToInteger(_currentToken.getValue());
     eat(Integer);
-
+    int left = stringToInteger(_currentToken.getValue());
+    
     eat(Plus);
 
-    int right = stringToInteger(_currentToken.getValue());
     eat(Integer);
+    int right = stringToInteger(_currentToken.getValue());
 
     return left + right;
     return 0;

@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-enum TokenType {Integer, Plus, eof};
+enum TokenType {Integer, Plus, Minus, eof};
 
 struct Type {
     TokenType t;
@@ -23,6 +23,9 @@ struct Type {
                 ans = "INTEGER";
                 break;
             case Plus:
+                ans = "PLUS";
+                break;
+            case Minus:
                 ans = "PLUS";
                 break;
             case eof:
@@ -38,9 +41,14 @@ struct Type {
 
 
 class Token {
-    // token type: INTEGER, PLUS, or EOF
+    /* *
+     * @brief token type: INTEGER, PLUS, MINUS or EOF
+     */
     Type _type;
-    // token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', or None
+    
+    /* *
+     * @brief token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', '-', or None
+     */
     std::string _value;
 public:
     // Constructors
