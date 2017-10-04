@@ -49,4 +49,8 @@ TEST(test_interp, interp_express_2) {
     ASSERT_EQ(myInterp.eval(), 18);
 }
 
+TEST(test_interp, interp_express_3) {
+    Interpreter myInterp("0+0");
+    ASSERT_EQ(myInterp.eval(), 0);
+}
 
