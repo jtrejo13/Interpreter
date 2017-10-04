@@ -18,21 +18,24 @@ Interpreter::Interpreter(std::string text) {
 
 Token Interpreter::getNextToken() {
     if (_pos > _text.size() - 1) {
-        return Token(eof, EOF);
+        return Token(eof, "EOF");
     }
     
-    char currentChar = _text[_pos];
+    std::string currentChar = _text.substr(1);
     
-    if (std::isdigit(currentChar)) {
-        _pos += 1;
-        return Token(Integer, currentChar);
-    } else if (currentChar == '+') {
-        _pos += 1;
-        return Token(Plus, currentChar);
-    } else {
-        error();
-        return Token();
-    }
+    
+    
+//    if (std::isdigit(currentChar)) {
+//        _pos += 1;
+//        return Token(Integer, currentChar);
+//    } else if (currentChar == '+') {
+//        _pos += 1;
+//        return Token(Plus, currentChar);
+//    } else {
+//        error();
+//        return Token();
+//    }
+    return Token();
 }
 
 void Interpreter::eat(TokenType t) {
@@ -46,15 +49,16 @@ void Interpreter::eat(TokenType t) {
 int Interpreter::eval() {
     _currentToken = getNextToken();
     
-    int left = _currentToken.getValue() - '0';
-    eat(Integer);
-    
-    eat(Plus);
-    
-    int right = _currentToken.getValue() - '0';
-    eat(Integer);
-    
-    return left + right;
+//    int left = _currentToken.getValue() - '0';
+//    eat(Integer);
+//
+//    eat(Plus);
+//
+//    int right = _currentToken.getValue() - '0';
+//    eat(Integer);
+//
+//    return left + right;
+    return 0;
 }
 
 void Interpreter::error() {

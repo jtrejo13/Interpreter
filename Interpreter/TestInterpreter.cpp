@@ -21,17 +21,17 @@ TEST(test_token, token_construct_0) {
 }
 
 TEST(test_token, token_construct_1) {
-    Token myToken(Integer, '9');
+    Token myToken(Integer, "9");
     ASSERT_EQ(myToken.toString(), "Token(INTEGER, 9)");
 }
 
 TEST(test_token, token_construct_2) {
-    Token myToken(Plus, '+');
+    Token myToken(Plus, "+");
     ASSERT_EQ(myToken.toString(), "Token(PLUS, +)");
 }
 
 TEST(test_token, token_construct_3) {
-    Token myToken(eof, EOF);
+    Token myToken(eof, "EOF");
     ASSERT_EQ(myToken.toString(), "Token(EOF, None)");
 }
 

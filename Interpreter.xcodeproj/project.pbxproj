@@ -11,6 +11,7 @@
 		20E2534D1F815AD60081DD3A /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534B1F815AD60081DD3A /* Token.cpp */; };
 		20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534E1F815B0B0081DD3A /* Interpreter.cpp */; };
 		20E253521F815B320081DD3A /* TestInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253511F815B320081DD3A /* TestInterpreter.cpp */; };
+		20E253591F8537DA0081DD3A /* strhelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253571F8537DA0081DD3A /* strhelper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,8 @@
 		20E2534E1F815B0B0081DD3A /* Interpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Interpreter.cpp; sourceTree = "<group>"; };
 		20E2534F1F815B0B0081DD3A /* Interpreter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interpreter.hpp; sourceTree = "<group>"; };
 		20E253511F815B320081DD3A /* TestInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestInterpreter.cpp; sourceTree = "<group>"; };
+		20E253571F8537DA0081DD3A /* strhelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = strhelper.cpp; sourceTree = "<group>"; };
+		20E253581F8537DA0081DD3A /* strhelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = strhelper.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +74,18 @@
 				20E2534F1F815B0B0081DD3A /* Interpreter.hpp */,
 				20E2534E1F815B0B0081DD3A /* Interpreter.cpp */,
 				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
+				20E2535A1F8538510081DD3A /* Helper */,
 			);
 			path = Interpreter;
+			sourceTree = "<group>";
+		};
+		20E2535A1F8538510081DD3A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				20E253581F8537DA0081DD3A /* strhelper.hpp */,
+				20E253571F8537DA0081DD3A /* strhelper.cpp */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +149,7 @@
 				20E253451F8159400081DD3A /* RunTestInterpreter.cpp in Sources */,
 				20E2534D1F815AD60081DD3A /* Token.cpp in Sources */,
 				20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */,
+				20E253591F8537DA0081DD3A /* strhelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,11 +41,11 @@ class Token {
     // token type: INTEGER, PLUS, or EOF
     Type _type;
     // token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', or None
-    char    _value;
+    std::string _value;
 public:
     // Constructors
     Token();
-    Token(TokenType t, char value);
+    Token(TokenType t, std::string value);
     
     /* *
      * @brief String representation of the class instance.
@@ -66,7 +66,7 @@ public:
      * @brief
      * @return
      */
-    char getValue();
+    std::string getValue();
 };
 
 #endif /* Token_hpp */

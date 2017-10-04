@@ -16,7 +16,7 @@ Token::Token() {
     _value = -1;
 }
 
-Token::Token(TokenType t, char value) {
+Token::Token(TokenType t, std::string value) {
     _type = {t};
     _value = value;
 }
@@ -37,7 +37,7 @@ TokenType Token::getTokenType() {
     return _type.t;
 }
 
-char Token::getValue() {
+std::string Token::getValue() {
     return _value;
 }
 
