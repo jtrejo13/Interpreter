@@ -26,14 +26,20 @@ TEST(test_token, token_construct_1) {
 }
 
 TEST(test_token, token_construct_2) {
-    Token myToken(Plus, "+");
-    ASSERT_EQ(myToken.toString(), "Token(PLUS, +)");
+    Token myToken(BinaryOp, "+");
+    ASSERT_EQ(myToken.toString(), "Token(BINARY_OP, +)");
 }
 
 TEST(test_token, token_construct_3) {
+    Token myToken(BinaryOp, "-");
+    ASSERT_EQ(myToken.toString(), "Token(BINARY_OP, -)");
+}
+
+TEST(test_token, token_construct_4) {
     Token myToken(eof, "EOF");
     ASSERT_EQ(myToken.toString(), "Token(EOF, None)");
 }
+
 
 ///////////////////////////////
 // MARK: Interpreter_NEXT_TOKEN
@@ -73,15 +79,15 @@ TEST(test_interp, interp_express_sum_3) {
     ASSERT_EQ(myInterp.eval(), 0);
 }
 
-//TEST(test_interp, interp_express_sub_1) {
-//    Interpreter myInterp("2 - 1");
-//    ASSERT_EQ(myInterp.eval(), 1);
-//}
-//
-//TEST(test_interp, interp_express_sub_2) {
-//    Interpreter myInterp("15 - 5");
-//    ASSERT_EQ(myInterp.eval(), 10);
-//}
+TEST(test_interp, interp_express_sub_1) {
+    Interpreter myInterp("2 - 1");
+    ASSERT_EQ(myInterp.eval(), 1);
+}
+
+TEST(test_interp, interp_express_sub_2) {
+    Interpreter myInterp("15 - 5");
+    ASSERT_EQ(myInterp.eval(), 10);
+}
 
 TEST(test_interp, interp_express_exept_4) {
     Interpreter myInterp("++0");

@@ -42,11 +42,11 @@ Token Interpreter::getNextToken() {
         }
         
         if (_in.peek() == '+') {
-            return Token(Plus, std::string(1, _in.get()));
+            return Token(BinaryOp, std::string(1, _in.get()));
         }
         
         if (_in.peek() == '-') {
-            return Token(Plus, std::string(1, _in.get()));
+            return Token(BinaryOp, std::string(1, _in.get()));
         }
     }
     return Token(eof, "EOF");
@@ -64,13 +64,17 @@ int Interpreter::eval() {
     eat(Integer);
     int left = stringToInteger(_currentToken.getValue());
     
-    eat(Plus);
+    eat(BinaryOp);
+    Token op = _currentToken;
     
     eat(Integer);
     int right = stringToInteger(_currentToken.getValue());
 
-    return left + right;
-    return 0;
+    if (op.getValue() == "+") {
+        return left + right;
+    } else {
+        return left - right;
+    }
 }
 
 void Interpreter::error() {
