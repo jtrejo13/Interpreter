@@ -10,7 +10,27 @@
 #define strhelper_hpp
 
 #include <stdio.h>
+#include <string>
 
-int stringToInteger();
+/* *
+ * @brief
+ * @param s
+ * @return
+ */
+bool isInteger(const std::string& s);
+
+/* *
+ * @brief
+ * @param s
+ * @return
+ */
+int stringToInteger(const std::string& s);
+
+/* *
+ * @brief
+ * @param i
+ * @return
+ */
+std::string integerToString(int i);
 
 #endif /* strhelper_hpp */

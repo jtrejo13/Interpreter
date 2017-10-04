@@ -21,8 +21,8 @@ TEST(test_token, token_construct_0) {
 }
 
 TEST(test_token, token_construct_1) {
-    Token myToken(Integer, "9");
-    ASSERT_EQ(myToken.toString(), "Token(INTEGER, 9)");
+    Token myToken(Integer, "10");
+    ASSERT_EQ(myToken.toString(), "Token(INTEGER, 10)");
 }
 
 TEST(test_token, token_construct_2) {
@@ -39,12 +39,14 @@ TEST(test_token, token_construct_3) {
 // MARK: Interpreter
 /////////////////////////
 
-TEST(test_interp, interp_express_1) {
-    Interpreter myInterp("1+3");
-    ASSERT_EQ(myInterp.eval(), 4);
-}
+//TEST(test_interp, interp_express_1) {
+//    Interpreter myInterp("1+3");
+//    ASSERT_EQ(myInterp.eval(), 4);
+//}
+//
+//TEST(test_interp, interp_express_2) {
+//    Interpreter myInterp("9+9");
+//    ASSERT_EQ(myInterp.eval(), 18);
+//}
 
-TEST(test_interp, interp_express_2) {
-    Interpreter myInterp("9+9");
-    ASSERT_EQ(myInterp.eval(), 18);
-}
+

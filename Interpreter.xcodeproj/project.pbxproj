@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20151C0A1F855B530058B6E7 /* TestStringHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20151C091F855B530058B6E7 /* TestStringHelper.cpp */; };
 		20E253451F8159400081DD3A /* RunTestInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E253441F8159400081DD3A /* RunTestInterpreter.cpp */; };
 		20E2534D1F815AD60081DD3A /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534B1F815AD60081DD3A /* Token.cpp */; };
 		20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E2534E1F815B0B0081DD3A /* Interpreter.cpp */; };
@@ -27,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20151C091F855B530058B6E7 /* TestStringHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TestStringHelper.cpp; path = Interpreter/Tests/TestStringHelper.cpp; sourceTree = SOURCE_ROOT; };
 		20E253411F8159400081DD3A /* Interpreter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interpreter; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E253441F8159400081DD3A /* RunTestInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RunTestInterpreter.cpp; sourceTree = "<group>"; };
 		20E2534B1F815AD60081DD3A /* Token.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20151C0B1F855C8A0058B6E7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				20151C091F855B530058B6E7 /* TestStringHelper.cpp */,
+				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		20E253381F81593F0081DD3A = {
 			isa = PBXGroup;
 			children = (
@@ -73,7 +84,7 @@
 				20E2534B1F815AD60081DD3A /* Token.cpp */,
 				20E2534F1F815B0B0081DD3A /* Interpreter.hpp */,
 				20E2534E1F815B0B0081DD3A /* Interpreter.cpp */,
-				20E253511F815B320081DD3A /* TestInterpreter.cpp */,
+				20151C0B1F855C8A0058B6E7 /* Tests */,
 				20E2535A1F8538510081DD3A /* Helper */,
 			);
 			path = Interpreter;
@@ -149,6 +160,7 @@
 				20E253451F8159400081DD3A /* RunTestInterpreter.cpp in Sources */,
 				20E2534D1F815AD60081DD3A /* Token.cpp in Sources */,
 				20E253501F815B0B0081DD3A /* Interpreter.cpp in Sources */,
+				20151C0A1F855B530058B6E7 /* TestStringHelper.cpp in Sources */,
 				20E253591F8537DA0081DD3A /* strhelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
