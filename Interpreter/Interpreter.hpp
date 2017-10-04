@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include "Token.hpp"
+#include "strhelper.hpp"
 
 class Interpreter {
     // client string input, e.g. "3+5"

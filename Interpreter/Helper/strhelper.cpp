@@ -31,6 +31,5 @@ int stringToInteger(const std::string& s) {
 }
 
 std::string integerToString(int i) {
-    
-    return std::string();
+    return std::to_string(i);
 }

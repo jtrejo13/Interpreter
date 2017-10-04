@@ -39,14 +39,14 @@ TEST(test_token, token_construct_3) {
 // MARK: Interpreter
 /////////////////////////
 
-//TEST(test_interp, interp_express_1) {
-//    Interpreter myInterp("1+3");
-//    ASSERT_EQ(myInterp.eval(), 4);
-//}
-//
-//TEST(test_interp, interp_express_2) {
-//    Interpreter myInterp("9+9");
-//    ASSERT_EQ(myInterp.eval(), 18);
-//}
+TEST(test_interp, interp_express_1) {
+    Interpreter myInterp("1+3");
+    ASSERT_EQ(myInterp.eval(), 4);
+}
+
+TEST(test_interp, interp_express_2) {
+    Interpreter myInterp("9+9");
+    ASSERT_EQ(myInterp.eval(), 18);
+}
 
 
