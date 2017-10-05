@@ -48,33 +48,55 @@ Token Interpreter::getNextToken() {
         if (_in.peek() == '-') {
             return Token(BinaryOp, std::string(1, _in.get()));
         }
+        
+        if (_in.peek() == '*') {
+            return Token(BinaryOp, std::string(1, _in.get()));
+        }
+        
+        if (_in.peek() == '/') {
+            return Token(BinaryOp, std::string(1, _in.get()));
+        }
     }
     return Token(eof, "EOF");
 }
 
 void Interpreter::eat(TokenType T) {
-    _currentToken = getNextToken();
-    if (_currentToken.getTokenType() != T) {
+    if (_currentToken.getTokenType() == T) {
+        _currentToken = getNextToken();
+    } else {
         error();
     }
 }
 
-
-int Interpreter::eval() {
+int Interpreter::term() {
+    Token token = _currentToken;
     eat(Integer);
-    int left = stringToInteger(_currentToken.getValue());
-    
-    eat(BinaryOp);
-    Token op = _currentToken;
-    
-    eat(Integer);
-    int right = stringToInteger(_currentToken.getValue());
+    return stringToInteger(token.getValue());
+}
 
-    if (op.getValue() == "+") {
-        return left + right;
-    } else {
-        return left - right;
+
+int Interpreter::expr() {
+    _currentToken = getNextToken();
+    
+    int result = term();
+    
+    while (_currentToken.getTokenType() == BinaryOp) {
+        Token op = _currentToken;
+        if (op.getValue() == "+") {
+            eat(BinaryOp);
+            result += term();
+        } else if (op.getValue() == "-") {
+            eat(BinaryOp);
+            result -= term();
+        } else if (op.getValue() == "*") {
+            eat(BinaryOp);
+            result *= term();
+        } else if (op.getValue() == "/"){
+            eat(BinaryOp);
+            result /= term();
+        }
     }
+    return result;
 }
 
 void Interpreter::error() {

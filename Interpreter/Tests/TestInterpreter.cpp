@@ -66,31 +66,66 @@ TEST(test_interp, interp_next_token_3) {
 
 TEST(test_interp, interp_express_sum_1) {
     Interpreter myInterp("1 + 1");
-    ASSERT_EQ(myInterp.eval(), 2);
+    ASSERT_EQ(myInterp.expr(), 2);
 }
 
 TEST(test_interp, interp_express_sum_2) {
     Interpreter myInterp("9 + 19");
-    ASSERT_EQ(myInterp.eval(), 28);
+    ASSERT_EQ(myInterp.expr(), 28);
 }
 
 TEST(test_interp, interp_express_sum_3) {
     Interpreter myInterp("0  +  0");
-    ASSERT_EQ(myInterp.eval(), 0);
+    ASSERT_EQ(myInterp.expr(), 0);
 }
 
 TEST(test_interp, interp_express_sub_1) {
     Interpreter myInterp("2 - 1");
-    ASSERT_EQ(myInterp.eval(), 1);
+    ASSERT_EQ(myInterp.expr(), 1);
 }
 
 TEST(test_interp, interp_express_sub_2) {
     Interpreter myInterp("15 - 5");
-    ASSERT_EQ(myInterp.eval(), 10);
+    ASSERT_EQ(myInterp.expr(), 10);
+}
+
+TEST(test_interp, interp_express_mult_1) {
+    Interpreter myInterp("2 * 14");
+    ASSERT_EQ(myInterp.expr(), 28);
+}
+
+TEST(test_interp, interp_express_mult_2) {
+    Interpreter myInterp("15 * 5");
+    ASSERT_EQ(myInterp.expr(), 75);
+}
+
+TEST(test_interp, interp_express_div_1) {
+    Interpreter myInterp("28 / 14");
+    ASSERT_EQ(myInterp.expr(), 2);
+}
+
+TEST(test_interp, interp_express_div_2) {
+    Interpreter myInterp("15 / 5");
+    ASSERT_EQ(myInterp.expr(), 3);
+}
+
+TEST(test_interp, interp_express_long_1) {
+    Interpreter myInterp("15 + 5 - 6 + 11 - 13 - 2");
+    ASSERT_EQ(myInterp.expr(), 10);
+}
+
+TEST(test_interp, interp_express_long_2) {
+    Interpreter myInterp("10 * 4  * 2 * 3 / 8");
+    ASSERT_EQ(myInterp.expr(), 30);
+}
+
+TEST(test_interp, interp_express_short_1) {
+    Interpreter myInterp("3");
+    ASSERT_EQ(myInterp.expr(), 3);
 }
 
 TEST(test_interp, interp_express_exept_4) {
     Interpreter myInterp("++0");
-    ASSERT_THROW(myInterp.eval(), std::invalid_argument);
+    ASSERT_THROW(myInterp.expr(), std::invalid_argument);
 }
 
