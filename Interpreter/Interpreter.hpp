@@ -32,6 +32,7 @@ public:
     std::string getIntegerStr();
     Token getNextToken();
     void eat(TokenType t);
+    int factor();
     int term();
     int expr();
     void error();

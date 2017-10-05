@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-enum TokenType {Integer, BinaryOp, eof};
+enum TokenType {Integer, BinaryOp, Plus, Minus, Mul, Div, eof};
 
 struct Type {
     TokenType t;
@@ -22,6 +22,10 @@ struct Type {
             case Integer:
                 ans = "INTEGER";
                 break;
+            case Plus:
+            case Minus:
+            case Mul:
+            case Div:
             case BinaryOp:
                 ans = "BINARY_OP";
                 break;

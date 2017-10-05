@@ -42,19 +42,19 @@ Token Interpreter::getNextToken() {
         }
         
         if (_in.peek() == '+') {
-            return Token(BinaryOp, std::string(1, _in.get()));
+            return Token(Plus, std::string(1, _in.get()));
         }
         
         if (_in.peek() == '-') {
-            return Token(BinaryOp, std::string(1, _in.get()));
+            return Token(Minus, std::string(1, _in.get()));
         }
         
         if (_in.peek() == '*') {
-            return Token(BinaryOp, std::string(1, _in.get()));
+            return Token(Mul, std::string(1, _in.get()));
         }
         
         if (_in.peek() == '/') {
-            return Token(BinaryOp, std::string(1, _in.get()));
+            return Token(Div, std::string(1, _in.get()));
         }
     }
     return Token(eof, "EOF");
@@ -68,10 +68,26 @@ void Interpreter::eat(TokenType T) {
     }
 }
 
-int Interpreter::term() {
+int Interpreter::factor() {
     Token token = _currentToken;
     eat(Integer);
     return stringToInteger(token.getValue());
+}
+
+int Interpreter::term() {
+    int result = factor();
+
+    while (_currentToken.getTokenType() == Mul || _currentToken.getTokenType() == Div) {
+        Token op = _currentToken;
+        if (op.getValue() == "*") {
+            eat(Mul);
+            result *= factor();
+        } else if (op.getValue() == "/"){
+            eat(Div);
+            result /= factor();
+        }
+    }
+    return result;
 }
 
 
@@ -79,21 +95,15 @@ int Interpreter::expr() {
     _currentToken = getNextToken();
     
     int result = term();
-    
-    while (_currentToken.getTokenType() == BinaryOp) {
+   
+    while ( _currentToken.getTokenType() == Plus || _currentToken.getTokenType() == Minus) {
         Token op = _currentToken;
         if (op.getValue() == "+") {
-            eat(BinaryOp);
+            eat(Plus);
             result += term();
         } else if (op.getValue() == "-") {
-            eat(BinaryOp);
+            eat(Minus);
             result -= term();
-        } else if (op.getValue() == "*") {
-            eat(BinaryOp);
-            result *= term();
-        } else if (op.getValue() == "/"){
-            eat(BinaryOp);
-            result /= term();
         }
     }
     return result;

@@ -26,12 +26,12 @@ TEST(test_token, token_construct_1) {
 }
 
 TEST(test_token, token_construct_2) {
-    Token myToken(BinaryOp, "+");
+    Token myToken(Plus, "+");
     ASSERT_EQ(myToken.toString(), "Token(BINARY_OP, +)");
 }
 
 TEST(test_token, token_construct_3) {
-    Token myToken(BinaryOp, "-");
+    Token myToken(Minus, "-");
     ASSERT_EQ(myToken.toString(), "Token(BINARY_OP, -)");
 }
 
@@ -109,6 +109,11 @@ TEST(test_interp, interp_express_div_2) {
     ASSERT_EQ(myInterp.expr(), 3);
 }
 
+TEST(test_interp, interp_express_short_1) {
+    Interpreter myInterp("3");
+    ASSERT_EQ(myInterp.expr(), 3);
+}
+
 TEST(test_interp, interp_express_long_1) {
     Interpreter myInterp("15 + 5 - 6 + 11 - 13 - 2");
     ASSERT_EQ(myInterp.expr(), 10);
@@ -119,9 +124,9 @@ TEST(test_interp, interp_express_long_2) {
     ASSERT_EQ(myInterp.expr(), 30);
 }
 
-TEST(test_interp, interp_express_short_1) {
-    Interpreter myInterp("3");
-    ASSERT_EQ(myInterp.expr(), 3);
+TEST(test_interp, interp_express_mix_1) {
+    Interpreter myInterp("14 + 2 * 3 - 6 / 2");
+    ASSERT_EQ(myInterp.expr(), 17);
 }
 
 TEST(test_interp, interp_express_exept_4) {
