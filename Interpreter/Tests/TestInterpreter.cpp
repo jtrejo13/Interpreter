@@ -42,7 +42,7 @@ TEST(test_token, token_construct_4) {
 
 
 ///////////////////////////////
-// MARK: Interpreter_NEXT_TOKEN
+// MARK: Scanner
 ///////////////////////////////
 
 TEST(test_interp, interp_next_token_1) {
@@ -60,9 +60,9 @@ TEST(test_interp, interp_next_token_3) {
     ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 424)");
 }
 
-////////////////////////////
-// MARK: Interpreter_EXPRESS
-////////////////////////////
+//////////////////////////////
+// MARK: Interpreter_BinaryOp
+//////////////////////////////
 
 TEST(test_interp, interp_express_sum_1) {
     Scanner* s = new Scanner("1 + 1");
@@ -118,6 +118,10 @@ TEST(test_interp, interp_express_div_2) {
     ASSERT_EQ(myInterp.expr(), 3);
 }
 
+//////////////////////////////
+// MARK: Interpreter_OperationStr
+//////////////////////////////
+
 TEST(test_interp, interp_express_short_1) {
     Scanner* s = new Scanner("3");
     Interpreter myInterp(s);
@@ -140,6 +144,30 @@ TEST(test_interp, interp_express_mix_1) {
     Scanner* s = new Scanner("14 + 2 * 3 - 6 / 2");
     Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 17);
+}
+
+TEST(test_interp, interp_express_paren_1) {
+    Scanner* s = new Scanner("(1 + 1)");
+    Interpreter myInterp(s);
+    ASSERT_EQ(myInterp.expr(), 2);
+}
+
+TEST(test_interp, interp_express_paren_2) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
+    Interpreter myInterp(s);
+    ASSERT_EQ(myInterp.expr(), 22);
+}
+
+TEST(test_interp, interp_express_paren_3) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1)) / (2 + 3) - 5 - 3 + (8)");
+    Interpreter myInterp(s);
+    ASSERT_EQ(myInterp.expr(), 10);
+}
+
+TEST(test_interp, interp_express_paren_4) {
+    Scanner* s = new Scanner("7 + (((3 + 2)))");
+    Interpreter myInterp(s);
+    ASSERT_EQ(myInterp.expr(), 12);
 }
 
 TEST(test_interp, interp_express_exept_4) {

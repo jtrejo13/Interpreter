@@ -14,7 +14,8 @@ Scanner::Scanner(std::string input) {
 
 Token Scanner::getNextToken() {
     
-    while(!_in.eof()) {
+    while(_in.peek() != std::char_traits<char>::eof()) {
+        
         if(_in.peek() == ' ') {
             skipWhitespace();
         }
@@ -37,6 +38,14 @@ Token Scanner::getNextToken() {
         
         if(_in.peek() == '/') {
             return Token(Div, std::string(1, _in.get()));
+        }
+        
+        if(_in.peek() == '(') {
+            return Token(LParen, std::string(1, _in.get()));
+        }
+        
+        if(_in.peek() == ')') {
+            return Token(RParen, std::string(1, _in.get()));
         }
         
         raiseError();

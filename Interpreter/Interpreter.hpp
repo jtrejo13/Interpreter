@@ -78,7 +78,7 @@ public:
      *
      *
      */
-    void error();
+    void raiseError();
 };
 
 #endif /* Interpreter_hpp */
