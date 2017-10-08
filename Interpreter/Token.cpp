@@ -13,7 +13,7 @@
 
 Token::Token() {
     _type = {eof};
-    _value = -1;
+    _value = "None";
 }
 
 Token::Token(TokenType t, std::string value) {

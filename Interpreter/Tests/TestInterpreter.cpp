@@ -46,18 +46,18 @@ TEST(test_token, token_construct_4) {
 ///////////////////////////////
 
 TEST(test_interp, interp_next_token_1) {
-    Interpreter myInterp("2");
-    ASSERT_EQ(myInterp.getNextToken().toString(), "Token(INTEGER, 2)");
+    Scanner* scanner = new Scanner("2");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 2)");
 }
 
 TEST(test_interp, interp_next_token_2) {
-    Interpreter myInterp("23424");
-    ASSERT_EQ(myInterp.getNextToken().toString(), "Token(INTEGER, 23424)");
+    Scanner* scanner = new Scanner("23424");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 23424)");
 }
 
 TEST(test_interp, interp_next_token_3) {
-    Interpreter myInterp("    424+");
-    ASSERT_EQ(myInterp.getNextToken().toString(), "Token(INTEGER, 424)");
+    Scanner* scanner = new Scanner("    424+");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 424)");
 }
 
 ////////////////////////////
@@ -65,72 +65,86 @@ TEST(test_interp, interp_next_token_3) {
 ////////////////////////////
 
 TEST(test_interp, interp_express_sum_1) {
-    Interpreter myInterp("1 + 1");
+    Scanner* s = new Scanner("1 + 1");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 2);
 }
 
 TEST(test_interp, interp_express_sum_2) {
-    Interpreter myInterp("9 + 19");
+    Scanner* s = new Scanner("9 + 19");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 28);
 }
 
 TEST(test_interp, interp_express_sum_3) {
-    Interpreter myInterp("0  +  0");
+    Scanner* s = new Scanner("0  +  0");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 0);
 }
 
 TEST(test_interp, interp_express_sub_1) {
-    Interpreter myInterp("2 - 1");
+    Scanner* s = new Scanner("2 - 1");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 1);
 }
 
 TEST(test_interp, interp_express_sub_2) {
-    Interpreter myInterp("15 - 5");
+    Scanner* s = new Scanner("15 - 5");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 10);
 }
 
 TEST(test_interp, interp_express_mult_1) {
-    Interpreter myInterp("2 * 14");
+    Scanner* s = new Scanner("2 * 14");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 28);
 }
 
 TEST(test_interp, interp_express_mult_2) {
-    Interpreter myInterp("15 * 5");
+    Scanner* s = new Scanner("15 * 5");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 75);
 }
 
 TEST(test_interp, interp_express_div_1) {
-    Interpreter myInterp("28 / 14");
+    Scanner* s = new Scanner("28 / 14");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 2);
 }
 
 TEST(test_interp, interp_express_div_2) {
-    Interpreter myInterp("15 / 5");
+    Scanner* s = new Scanner("15 / 5");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 3);
 }
 
 TEST(test_interp, interp_express_short_1) {
-    Interpreter myInterp("3");
+    Scanner* s = new Scanner("3");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 3);
 }
 
 TEST(test_interp, interp_express_long_1) {
-    Interpreter myInterp("15 + 5 - 6 + 11 - 13 - 2");
+    Scanner* s = new Scanner("15 + 5 - 6 + 11 - 13 - 2");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 10);
 }
 
 TEST(test_interp, interp_express_long_2) {
-    Interpreter myInterp("10 * 4  * 2 * 3 / 8");
+    Scanner* s = new Scanner("10 * 4  * 2 * 3 / 8");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 30);
 }
 
 TEST(test_interp, interp_express_mix_1) {
-    Interpreter myInterp("14 + 2 * 3 - 6 / 2");
+    Scanner* s = new Scanner("14 + 2 * 3 - 6 / 2");
+    Interpreter myInterp(s);
     ASSERT_EQ(myInterp.expr(), 17);
 }
 
 TEST(test_interp, interp_express_exept_4) {
-    Interpreter myInterp("++0");
+    Scanner* s = new Scanner("++0");
+    Interpreter myInterp(s);
     ASSERT_THROW(myInterp.expr(), std::invalid_argument);
 }
 

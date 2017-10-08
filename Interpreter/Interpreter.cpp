@@ -11,58 +11,58 @@
 
 #include "Interpreter.hpp"
 
-
-Interpreter::Interpreter(std::string text) {
-    _in = std::stringstream(text);
+Interpreter::Interpreter(Scanner* scanner) {
+    _scanner = scanner;
+    _currentToken = _scanner->getNextToken();
 }
 
-void Interpreter::skipWhitespace() {
-    while (_in.peek() == ' ') {
-        _in.ignore();
-    }
-}
-
-std::string Interpreter::getIntegerStr() {
-    std::string res = "";
-    while(!_in.eof() && isdigit(_in.peek())){
-        res += _in.get();
-    }
-    return res;
-}
-
-Token Interpreter::getNextToken() {
-    
-    while (!_in.eof()) {
-        if (_in.peek() == ' ') {
-            skipWhitespace();
-        }
-            
-        if (isdigit(_in.peek())) {
-            return Token(Integer, getIntegerStr());
-        }
-        
-        if (_in.peek() == '+') {
-            return Token(Plus, std::string(1, _in.get()));
-        }
-        
-        if (_in.peek() == '-') {
-            return Token(Minus, std::string(1, _in.get()));
-        }
-        
-        if (_in.peek() == '*') {
-            return Token(Mul, std::string(1, _in.get()));
-        }
-        
-        if (_in.peek() == '/') {
-            return Token(Div, std::string(1, _in.get()));
-        }
-    }
-    return Token(eof, "EOF");
-}
+//void Interpreter::skipWhitespace() {
+//    while (_in.peek() == ' ') {
+//        _in.ignore();
+//    }
+//}
+//
+//std::string Interpreter::getIntegerStr() {
+//    std::string res = "";
+//    while(!_in.eof() && isdigit(_in.peek())){
+//        res += _in.get();
+//    }
+//    return res;
+//}
+//
+//Token Interpreter::getNextToken() {
+//
+//    while (!_in.eof()) {
+//        if (_in.peek() == ' ') {
+//            skipWhitespace();
+//        }
+//
+//        if (isdigit(_in.peek())) {
+//            return Token(Integer, getIntegerStr());
+//        }
+//
+//        if (_in.peek() == '+') {
+//            return Token(Plus, std::string(1, _in.get()));
+//        }
+//
+//        if (_in.peek() == '-') {
+//            return Token(Minus, std::string(1, _in.get()));
+//        }
+//
+//        if (_in.peek() == '*') {
+//            return Token(Mul, std::string(1, _in.get()));
+//        }
+//
+//        if (_in.peek() == '/') {
+//            return Token(Div, std::string(1, _in.get()));
+//        }
+//    }
+//    return Token(eof, "None");
+//}
 
 void Interpreter::eat(TokenType T) {
     if (_currentToken.getTokenType() == T) {
-        _currentToken = getNextToken();
+        _currentToken = _scanner->getNextToken();
     } else {
         error();
     }
@@ -92,8 +92,6 @@ int Interpreter::term() {
 
 
 int Interpreter::expr() {
-    _currentToken = getNextToken();
-    
     int result = term();
    
     while ( _currentToken.getTokenType() == Plus || _currentToken.getTokenType() == Minus) {
