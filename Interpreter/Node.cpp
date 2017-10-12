@@ -14,14 +14,20 @@ Node::Node() {
     _right = nullptr;
 }
 
-Node::Node(Token t) {
+Node::Node(Token t) : _token(t)
+{
     _left = nullptr;
-    _token = t;
     _right = nullptr;
 }
 
-Node::Node(Node* left, Token t, Node* right) {
+Node::Node(Node* left, Token t, Node* right) : _token(t)
+{
     _left = left;
-    _token = t;
     _right = right;
 }
+
+std::string Node::getType() {
+    Type t = {_token.getType()};
+    return t.toString();
+}
+

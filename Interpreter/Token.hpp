@@ -64,7 +64,7 @@ public:
      * @return token as a std::string
      * Examples:
      * Token(INTEGER, 3)
-     * Token(PLUS '+')
+     * Token(BINARY_OP '+')
      */
     std::string toString();
     
@@ -72,7 +72,7 @@ public:
      * @brief
      * @return
      */
-    TokenType getTokenType();
+    TokenType getType();
     
     /* *
      * @brief

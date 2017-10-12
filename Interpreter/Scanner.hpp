@@ -17,17 +17,6 @@
 
 class Scanner {
     std::stringstream _in;
-public:
-    
-    // Constructors
-    Scanner(std::string input);
-    
-    /**
-     *
-     *
-     *
-     */
-    Token getNextToken();
     
     /**
      *
@@ -49,7 +38,17 @@ public:
      *
      */
     void raiseError();
+public:
     
+    // Constructors
+    Scanner(std::string input);
+    
+    /**
+     *
+     *
+     *
+     */
+    Token getNextToken();
 };
 
 #endif /* Scanner_hpp */

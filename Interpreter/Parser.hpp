@@ -10,8 +10,7 @@
 #define Parser_hpp
 
 #include <stdio.h>
-#include "BinaryOp.hpp"
-#include "Num.hpp"
+#include "Node.hpp"
 #include "Token.hpp"
 #include "Scanner.hpp"
 
@@ -19,14 +18,15 @@ class Parser {
     Scanner* _scanner;
     Token _currentToken;
     
-public:
-    Parser(Scanner* s);
-    
-    Node* parse();
     Node* expr();
     Node* term();
     Node* factor();
     void eat(TokenType T);
     void raiseError();
+    
+public:
+    Parser(Scanner* s);
+    
+    Node* parse();
 };
 #endif /* Parser_hpp */

@@ -14,11 +14,12 @@
 
 class Node {
     Node* _left;
-    Node* _right;
     Token _token;
+    Node* _right;
 public:
     Node();
     Node(Token t);
     Node(Node* left, Token t, Node* right);
+    std::string getType();
 };
 #endif /* Node_hpp */

@@ -20,14 +20,14 @@ Node* Parser::parse() {
 Node* Parser::expr() {
     Node* node = term();
     
-    while(_currentToken.getTokenType() == Plus || _currentToken.getTokenType() == Minus) {
+    while(_currentToken.getType() == Plus || _currentToken.getType() == Minus) {
         Token token = _currentToken;
         if (token.getValue() == "+") {
             eat(Plus);
         } else if (token.getValue() == "-") {
             eat(Minus);
         }
-        node = new BinaryOp(reinterpret_cast<Num*>(node), token, reinterpret_cast<Num*>(term()));
+        node = new Node(node, token, term());
     }
     return node;
 }
@@ -35,23 +35,23 @@ Node* Parser::expr() {
 Node* Parser::term() {
     Node* node = factor();
 
-    while(_currentToken.getTokenType() == Mul || _currentToken.getTokenType() == Div) {
+    while(_currentToken.getType() == Mul || _currentToken.getType() == Div) {
         Token token = _currentToken;
         if (token.getValue() == "*") {
             eat(Mul);
         } else if (token.getValue() == "/") {
             eat(Div);
         }
-        node = new BinaryOp(reinterpret_cast<Num*>(node), token, reinterpret_cast<Num*>(factor()));
+        node = new Node(node, token, factor());
     }
     return node;
 }
 
 Node* Parser::factor() {
     Token token = _currentToken;
-    if (token.getTokenType() == Integer) {
+    if (token.getType() == Integer) {
         eat(Integer);
-        return new Num(token);
+        return new Node(token);
     } else if (token.getValue() == "(") {
         eat(LParen);
         Node* node = expr();
@@ -59,11 +59,11 @@ Node* Parser::factor() {
         return node;
     }
     raiseError();
-    return new Num();
+    return new Node();
 }
 
 void Parser::eat(TokenType T) {
-    if (T == _currentToken.getTokenType()) {
+    if (T == _currentToken.getType()) {
         _currentToken = _scanner->getNextToken();
     } else {
         raiseError();

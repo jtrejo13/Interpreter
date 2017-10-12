@@ -33,7 +33,7 @@ std::string Token::toString() {
     return out.str();
 }
 
-TokenType Token::getTokenType() {
+TokenType Token::getType() {
     return _type.t;
 }
 

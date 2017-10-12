@@ -11,65 +11,22 @@
 
 #include "Interpreter.hpp"
 
-Interpreter::Interpreter(Scanner* scanner) {
-    _scanner = scanner;
-    _currentToken = _scanner->getNextToken();
+Interpreter::Interpreter(Parser* parser) {
+    _parser = parser;
 }
 
-void Interpreter::eat(TokenType T) {
-    if (_currentToken.getTokenType() == T) {
-        _currentToken = _scanner->getNextToken();
-    } else {
-        raiseError();
-    }
+int Interpreter::interpret() {
+    Node* tree = _parser->parse();
+    return visit(tree);
 }
 
-int Interpreter::factor() {
-    Token token = _currentToken;
-    if (token.getValue() == "(") {
-        eat(LParen);
-        int result = expr();
-        eat(RParen);
-        return result;
-    } else if (token.getTokenType() == Integer) {
-        eat(Integer);
-        return stringToInteger(token.getValue());
+int Interpreter::visit(Node* node) {
+    if (node->getType() == "INTEGER") {
+        
+    } else if (node->getType() == "BINARY_OP") {
+        
     }
-    raiseError();
     return 0;
-}
-
-int Interpreter::term() {
-    int result = factor();
-
-    while (_currentToken.getTokenType() == Mul || _currentToken.getTokenType() == Div) {
-        Token op = _currentToken;
-        if (op.getValue() == "*") {
-            eat(Mul);
-            result *= factor();
-        } else if (op.getValue() == "/"){
-            eat(Div);
-            result /= factor();
-        }
-    }
-    return result;
-}
-
-
-int Interpreter::expr() {
-    int result = term();
-   
-    while ( _currentToken.getTokenType() == Plus || _currentToken.getTokenType() == Minus) {
-        Token op = _currentToken;
-        if (op.getValue() == "+") {
-            eat(Plus);
-            result += term();
-        } else if (op.getValue() == "-") {
-            eat(Minus);
-            result -= term();
-        }
-    }
-    return result;
 }
 
 void Interpreter::raiseError() {

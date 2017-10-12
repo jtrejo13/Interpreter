@@ -12,7 +12,7 @@ Num::Num() {
     _token = Token();
 }
 
-Num::Num(Token t) : Node(t) {
+Num::Num(Token t) {
     _token = t;
 }
 
