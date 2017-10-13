@@ -48,7 +48,7 @@ Token Scanner::getNextToken() {
             return Token(RParen, std::string(1, _in.get()));
         }
         
-        raiseError();
+        throwError();
     }
     return Token(eof, "None");
 }
@@ -67,6 +67,6 @@ std::string Scanner::getIntegerStr() {
     return res;
 }
 
-void Scanner::raiseError() {
+void Scanner::throwError() {
     throw std::invalid_argument("Invalid character");
 }

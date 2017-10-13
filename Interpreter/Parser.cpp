@@ -58,7 +58,7 @@ Node* Parser::factor() {
         eat(RParen);
         return node;
     }
-    raiseError();
+    throwError();
     return new Node();
 }
 
@@ -66,10 +66,10 @@ void Parser::eat(TokenType T) {
     if (T == _currentToken.getType()) {
         _currentToken = _scanner->getNextToken();
     } else {
-        raiseError();
+        throwError();
     }
 }
 
-void Parser::raiseError() {
+void Parser::throwError() {
     throw std::invalid_argument("Invalid syntax.");
 }

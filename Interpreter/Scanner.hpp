@@ -37,7 +37,7 @@ class Scanner {
      *
      *
      */
-    void raiseError();
+    void throwError();
 public:
     
     // Constructors

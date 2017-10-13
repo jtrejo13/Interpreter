@@ -24,13 +24,15 @@ class Interpreter {
     Parser* _parser;
     
     int visit(Node* node);
+    int visitBiOp(Node* node);
+    int visitNum(Node* node);
     
     /**
      *
      *
      *
      */
-    void raiseError();
+    void throwError();
     
 public:
     // Constructors

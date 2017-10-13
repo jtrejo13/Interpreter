@@ -21,5 +21,8 @@ public:
     Node(Token t);
     Node(Node* left, Token t, Node* right);
     std::string getType();
+    Token getToken();
+    Node* left();
+    Node* right();
 };
 #endif /* Node_hpp */

@@ -22,7 +22,7 @@ class Parser {
     Node* term();
     Node* factor();
     void eat(TokenType T);
-    void raiseError();
+    void throwError();
     
 public:
     Parser(Scanner* s);

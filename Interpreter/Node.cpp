@@ -26,8 +26,20 @@ Node::Node(Node* left, Token t, Node* right) : _token(t)
     _right = right;
 }
 
+Node* Node::left() {
+    return _left;
+}
+
+Node* Node::right() {
+    return _right;
+}
+
 std::string Node::getType() {
     Type t = {_token.getType()};
     return t.toString();
+}
+
+Token Node::getToken() {
+    return _token;
 }
 
