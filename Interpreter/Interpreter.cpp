@@ -22,9 +22,9 @@ int Interpreter::interpret() {
 
 int Interpreter::visit(Node* node) {
     if (node->getType() == "INTEGER") {
-        return visitBiOp(node);
-    } else if (node->getType() == "BINARY_OP") {
         return visitNum(node);
+    } else if (node->getType() == "BINARY_OP") {
+        return visitBiOp(node);
     }
     throwError();
     return 0;
