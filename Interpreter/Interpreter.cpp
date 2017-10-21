@@ -25,6 +25,8 @@ int Interpreter::visit(Node* node) {
         return visitNum(node);
     } else if (node->getType() == "BINARY_OP") {
         return visitBiOp(node);
+    } else if (node->getType() == "UNARY_OP") {
+        return visitUnOp(node);
     }
     throwError();
     return 0;
@@ -40,6 +42,17 @@ int Interpreter::visitBiOp(Node* node) {
         return visit(node->left()) * visit(node->right());
     } else if (t.getType() == Div) {
         return visit(node->left()) / visit(node->right());
+    }
+    throwError();
+    return 0;
+}
+
+int Interpreter::visitUnOp(Node* node) {
+    Token t = node->getToken();
+    if (t.getType() == Plus) {
+        return visit(node->right());
+    } else if (t.getType() == Minus) {
+        return -1 * visit(node->right());
     }
     throwError();
     return 0;

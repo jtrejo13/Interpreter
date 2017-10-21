@@ -272,11 +272,10 @@ TEST(test_interp, interp_express_paren_4) {
 // MARK: Interpreter_UnaryOperation
 //////////////////////////////
 
-
-//TEST(test_interp, interp_express_UnOp_1) {
-//    Scanner* s = new Scanner("--2");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 2);
-//}
+TEST(test_interp, interp_express_UnOp_1) {
+    Scanner* s = new Scanner("--2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 2);
+}
 

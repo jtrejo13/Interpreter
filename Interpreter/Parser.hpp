@@ -14,6 +14,7 @@
 #include <iomanip>
 #include "BinaryOp.hpp"
 #include "Num.hpp"
+#include "UnaryOp.hpp"
 #include "Token.hpp"
 #include "Scanner.hpp"
 

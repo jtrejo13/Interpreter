@@ -25,6 +25,7 @@ class Interpreter {
     
     int visit(Node* node);
     int visitBiOp(Node* node);
+    int visitUnOp(Node* node);
     int visitNum(Node* node);
     
     /**
