@@ -11,8 +11,19 @@
 
 #include <sstream>
 #include <string>
+#include <map>
 
 enum TokenType {Integer, Plus, Minus, Mul, Div, LParen, RParen, eof};
+const std::map <int, std::string> TokenTypeNames {
+    { Integer , "Integer" },
+    { Plus    , "Plus" },
+    { Minus   , "Minus" },
+    { Mul     , "Mul" },
+    { Div     , "Div" },
+    { LParen  , "LParen" },
+    { RParen  , "RParen" },
+    { eof     , "eof" }
+};
 
 class Token {
     /* *

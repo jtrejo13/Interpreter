@@ -41,31 +41,39 @@ std::string Token::getValue() {
     return _value;
 }
 
-std::string typeToString(TokenType T) {
-    std::string ans;
-    switch(T) {
-        case Integer:
-            ans = "INTEGER";
-            break;
-        case Plus:
-        case Minus:
-        case Mul:
-        case Div:
-            ans = "BINARY_OP";
-            break;
-        case LParen:
-        case RParen:
-            ans = "PAREN";
-            break;
-        case eof:
-            ans = "EOF";
-            break;
-        default:
-            ans = "UNDEF";
-            break;
-    }
-    return ans;
-}
+//std::string typeToString(TokenType T) {
+//    std::string ans;
+//    switch(T) {
+//        case Integer:
+//            ans = "INTEGER";
+//            break;
+//        case Plus:
+//        case Minus:
+//        case Mul:
+//        case Div:
+//            ans = "BINARY_OP";
+//            break;
+//        case LParen:
+//        case RParen:
+//            ans = "PAREN";
+//            break;
+//        case eof:
+//            ans = "EOF";
+//            break;
+//        default:
+//            ans = "UNDEF";
+//            break;
+//    }
+//    return ans;
+//}
 
+std::string typeToString(TokenType T) {
+    try {
+        std::string name = TokenTypeNames.at(T);
+        return name;
+    } catch (std::out_of_range e) {
+        return "UNDEF";
+    }
+}
 #endif
 
