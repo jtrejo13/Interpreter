@@ -17,7 +17,8 @@
 class BinaryOp : public Node {
     
 public:
-
+    using Node::Node;
+    std::string getType();
 };
 
 #endif /* BinaryOp_hpp */

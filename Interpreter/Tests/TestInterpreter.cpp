@@ -8,7 +8,8 @@
 
 #include <cstdio>
 #include "gtest/gtest.h"
-#include "Token.hpp"
+#include "BinaryOp.hpp"
+#include "Num.hpp"
 #include "Interpreter.hpp"
 
 /////////////////////////
@@ -68,44 +69,77 @@ TEST(test_scanner, scanner_next_token_4) {
     ASSERT_EQ(scanner->getNextToken().toString(), "Token(Integer, 239)");
 }
 
+//////////////////////////////
+// MARK: Node
+//////////////////////////////
+
+TEST(test_node, node_new_node_1) {
+    Token t = Token(Plus, "+");
+    Node* node = new Node(t);
+    ASSERT_EQ(node->getType(), "NODE");
+}
+
+TEST(test_node, node_new_node_2) {
+    Token t = Token(Plus, "+");
+    BinaryOp* bOp = new BinaryOp();
+    ASSERT_EQ(bOp->getType(), "BINARY_OP");
+}
+
+TEST(test_node, node_new_node_3) {
+    Token t = Token(Plus, "+");
+    BinaryOp* bOp = new BinaryOp(t);
+    ASSERT_EQ(bOp->getType(), "BINARY_OP");
+}
+
+TEST(test_node, node_new_node_4) {
+    Token t_m = Token(Plus, "+");
+    Token t_l = Token(Integer, "1");
+    Token t_r = Token(Integer, "1");
+    Num*      num1 = new Num(t_l);
+    Num*      num2 = new Num(t_r);
+    BinaryOp* biOp = new BinaryOp(num1, t_m, num2);
+    printTree(biOp, 3);
+    ASSERT_EQ(biOp->getType(), "BINARY_OP");
+}
+
 ///////////////////////////////
 // MARK: Parser
 ///////////////////////////////
 
-TEST(test_parser, parser_parse_1) {
-    Scanner* s = new Scanner("2");
-    Parser* parser = new Parser(s);
-    Node* tree = parser->parse();
-    printTree(tree, 3);
-}
-
-TEST(test_parser, parser_parse_2) {
-    Scanner* s = new Scanner("2+2");
-    Parser* parser = new Parser(s);
-    Node* tree = parser->parse();
-    printTree(tree, 3);
-}
-
-TEST(test_parser, parser_parse_3) {
-    Scanner* s = new Scanner("2 + 2 ");
-    Parser* parser = new Parser(s);
-    Node* tree = parser->parse();
-    printTree(tree, 3);
-}
-
-TEST(test_parser, parser_parse_4) {
-    Scanner* s = new Scanner(" 2 * 7 + 3 ");
-    Parser* parser = new Parser(s);
-    Node* tree = parser->parse();
-    printTree(tree, 3);
-}
-
-TEST(test_parser, parser_parse_5) {
-    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
-    Parser* parser = new Parser(s);
-    Node* tree = parser->parse();
-    printTree(tree, 3);
-}
+//TEST(test_parser, parser_parse_1) {
+//    Scanner* s = new Scanner("2");
+//    Parser* parser = new Parser(s);
+//    Node* tree = parser->parse();
+//    printTree(tree, 3);
+//}
+//
+//TEST(test_parser, parser_parse_2) {
+//    Scanner* s = new Scanner("2+2");
+//    Parser* parser = new Parser(s);
+//    Node* tree = parser->parse();
+//    printTree(tree, 3);
+//}
+//
+//TEST(test_parser, parser_parse_3) {
+//    Scanner* s = new Scanner("2 + 2 ");
+//    Parser* parser = new Parser(s);
+//    Node* tree = parser->parse();
+//    printTree(tree, 3);
+//}
+//
+//TEST(test_parser, parser_parse_4) {
+//    Scanner* s = new Scanner(" 2 * 7 + 3 ");
+//    Parser* parser = new Parser(s);
+//    Node* tree = parser->parse();
+//    printTree(tree, 3);
+//}
+//
+//TEST(test_parser, parser_parse_5) {
+//    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
+//    Parser* parser = new Parser(s);
+//    Node* tree = parser->parse();
+//    printTree(tree, 3);
+//}
 
 //////////////////////////////
 // MARK: Interpreter

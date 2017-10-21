@@ -8,4 +8,6 @@
 
 #include "BinaryOp.hpp"
 
-
+std::string BinaryOp::getType() {
+    return "BINARY_OP";
+}

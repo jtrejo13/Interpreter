@@ -8,3 +8,6 @@
 
 #include "Num.hpp"
 
+std::string Num::getType() {
+    return "BINARY_OP";
+}

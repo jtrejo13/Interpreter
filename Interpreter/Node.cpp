@@ -35,7 +35,7 @@ Node* Node::right() {
 }
 
 std::string Node::getType() {
-    return typeToString(_token.getType());
+    return "NODE";
 }
 
 Token Node::getToken() {
