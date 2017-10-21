@@ -106,40 +106,40 @@ TEST(test_node, node_new_node_4) {
 // MARK: Parser
 ///////////////////////////////
 
-//TEST(test_parser, parser_parse_1) {
-//    Scanner* s = new Scanner("2");
-//    Parser* parser = new Parser(s);
-//    Node* tree = parser->parse();
-//    printTree(tree, 3);
-//}
-//
-//TEST(test_parser, parser_parse_2) {
-//    Scanner* s = new Scanner("2+2");
-//    Parser* parser = new Parser(s);
-//    Node* tree = parser->parse();
-//    printTree(tree, 3);
-//}
-//
-//TEST(test_parser, parser_parse_3) {
-//    Scanner* s = new Scanner("2 + 2 ");
-//    Parser* parser = new Parser(s);
-//    Node* tree = parser->parse();
-//    printTree(tree, 3);
-//}
-//
-//TEST(test_parser, parser_parse_4) {
-//    Scanner* s = new Scanner(" 2 * 7 + 3 ");
-//    Parser* parser = new Parser(s);
-//    Node* tree = parser->parse();
-//    printTree(tree, 3);
-//}
-//
-//TEST(test_parser, parser_parse_5) {
-//    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
-//    Parser* parser = new Parser(s);
-//    Node* tree = parser->parse();
-//    printTree(tree, 3);
-//}
+TEST(test_parser, parser_parse_1) {
+    Scanner* s = new Scanner("2");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_2) {
+    Scanner* s = new Scanner("2+2");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_3) {
+    Scanner* s = new Scanner("2 + 2 ");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_4) {
+    Scanner* s = new Scanner(" 2 * 7 + 3 ");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_5) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
 
 //////////////////////////////
 // MARK: Interpreter

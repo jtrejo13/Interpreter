@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <iomanip>
-#include "Node.hpp"
+#include "BinaryOp.hpp"
+#include "Num.hpp"
 #include "Token.hpp"
 #include "Scanner.hpp"
 

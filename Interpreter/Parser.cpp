@@ -27,7 +27,7 @@ Node* Parser::expr() {
         } else if (token.getValue() == "-") {
             eat(Minus);
         }
-        node = new Node(node, token, term());
+        node = new BinaryOp(node, token, term());
     }
     return node;
 }
@@ -42,7 +42,7 @@ Node* Parser::term() {
         } else if (token.getValue() == "/") {
             eat(Div);
         }
-        node = new Node(node, token, factor());
+        node = new BinaryOp(node, token, factor());
     }
     return node;
 }
@@ -51,14 +51,14 @@ Node* Parser::factor() {
     Token token = _currentToken;
 //    if (token.getType() == Plus) {
 //        eat(Plus);
-//        return new Node(token);
+//        return new UnaryOp(token);
 //    } else if (token.getType() == Minus) {
 //        eat(Minus);
-//        return new Node(token);
+//        return new UnaryOp(token);
 //    } else
     if (token.getType() == Integer) {
         eat(Integer);
-        return new Node(token);
+        return new Num(token);
     } else if (token.getValue() == "(") {
         eat(LParen);
         Node* node = expr();
