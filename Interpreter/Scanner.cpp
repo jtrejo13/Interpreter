@@ -18,6 +18,7 @@ Token Scanner::getNextToken() {
         
         if(_in.peek() == ' ') {
             skipWhitespace();
+            if (_in.peek() == std::char_traits<char>::eof()) break;
         }
         
         if(isdigit(_in.peek())) {

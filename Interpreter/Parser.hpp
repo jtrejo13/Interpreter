@@ -10,6 +10,8 @@
 #define Parser_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <iomanip>
 #include "Node.hpp"
 #include "Token.hpp"
 #include "Scanner.hpp"
@@ -26,7 +28,8 @@ class Parser {
     
 public:
     Parser(Scanner* s);
-    
     Node* parse();
 };
+
+void printTree(Node* n, int indent);
 #endif /* Parser_hpp */

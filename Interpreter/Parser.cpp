@@ -73,3 +73,22 @@ void Parser::eat(TokenType T) {
 void Parser::throwError() {
     throw std::invalid_argument("Invalid syntax.");
 }
+
+void printTree(Node* p, int indent) {
+    if(p != NULL) {
+        if(p->right()) {
+            printTree(p->right(), indent+4);
+        }
+        if (indent) {
+            std::cout << std::setw(indent) << ' ';
+        }
+        if (p->right()) {
+            std::cout<<" /\n" << std::setw(indent) << ' ';
+        }
+        std::cout<< p->getToken().toString() << "\n ";
+        if(p->left()) {
+            std::cout << std::setw(indent) << ' ' <<" \\\n";
+            printTree(p->left(), indent+4);
+        }
+    }
+}

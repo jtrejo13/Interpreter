@@ -45,31 +45,79 @@ TEST(test_token, token_construct_4) {
 // MARK: Scanner
 ///////////////////////////////
 
-TEST(test_interp, interp_next_token_1) {
+TEST(test_scanner, scanner_next_token_1) {
     Scanner* scanner = new Scanner("2");
     ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 2)");
 }
 
-TEST(test_interp, interp_next_token_2) {
+TEST(test_scanner, scanner_next_token_2) {
     Scanner* scanner = new Scanner("23424");
     ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 23424)");
 }
 
-TEST(test_interp, interp_next_token_3) {
+TEST(test_scanner, scanner_next_token_3) {
     Scanner* scanner = new Scanner("    424+");
     ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 424)");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(BINARY_OP, +)");
+}
+
+TEST(test_scanner, scanner_next_token_4) {
+    Scanner* scanner = new Scanner("    424 +  239  ");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 424)");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(BINARY_OP, +)");
+    ASSERT_EQ(scanner->getNextToken().toString(), "Token(INTEGER, 239)");
+}
+
+///////////////////////////////
+// MARK: Parser
+///////////////////////////////
+
+TEST(test_parser, parser_parse_1) {
+    Scanner* s = new Scanner("2");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_2) {
+    Scanner* s = new Scanner("2+2");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_3) {
+    Scanner* s = new Scanner("2 + 2 ");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_4) {
+    Scanner* s = new Scanner(" 2 * 7 + 3 ");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
+}
+
+TEST(test_parser, parser_parse_5) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
+    Parser* parser = new Parser(s);
+    Node* tree = parser->parse();
+    printTree(tree, 3);
 }
 
 //////////////////////////////
-// MARK: Interpreter_BinaryOp
+// MARK: Interpreter
 //////////////////////////////
 
 //TEST(test_interp, interp_express_sum_1) {
 //    Scanner* s = new Scanner("1 + 1");
-//    Interpreter myInterp(s);
-//    ASSERT_EQ(myInterp.expr(), 2);
+//    Parser*  p = new Parser(s);
+//    Interpreter myInterp(p);
+//    ASSERT_EQ(myInterp.interpret(), 2);
 //}
-//
+
 //TEST(test_interp, interp_express_sum_2) {
 //    Scanner* s = new Scanner("9 + 19");
 //    Interpreter myInterp(s);
