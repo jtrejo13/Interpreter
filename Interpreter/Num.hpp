@@ -17,7 +17,9 @@ class Num : public Node {
 
 public:
     using Node::Node;
-    std::string getType();
+    std::string getType() {
+        return "INTEGER";
+    }
 };
 
 #endif /* Num_hpp */

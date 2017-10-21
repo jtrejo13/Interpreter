@@ -145,128 +145,128 @@ TEST(test_parser, parser_parse_5) {
 // MARK: Interpreter
 //////////////////////////////
 
-//TEST(test_interp, interp_express_sum_1) {
-//    Scanner* s = new Scanner("1 + 1");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 2);
-//}
+TEST(test_interp, interp_express_sum_1) {
+    Scanner* s = new Scanner("1 + 1");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 2);
+}
 
-//TEST(test_interp, interp_express_sum_2) {
-//    Scanner* s = new Scanner("9 + 19");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 28);
-//}
-//
-//TEST(test_interp, interp_express_sum_3) {
-//    Scanner* s = new Scanner("0  +  0");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 0);
-//}
-//
-//TEST(test_interp, interp_express_sub_1) {
-//    Scanner* s = new Scanner(" 2 - 1  ");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 1);
-//}
-//
-//TEST(test_interp, interp_express_sub_2) {
-//    Scanner* s = new Scanner("15  -  5");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 10);
-//}
-//
-//TEST(test_interp, interp_express_mult_1) {
-//    Scanner* s = new Scanner("2 * 14");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 28);
-//}
-//
-//TEST(test_interp, interp_express_mult_2) {
-//    Scanner* s = new Scanner("15 * 5");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 75);
-//}
-//
-//TEST(test_interp, interp_express_div_1) {
-//    Scanner* s = new Scanner(" 28 /  14");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 2);
-//}
-//
-//TEST(test_interp, interp_express_div_2) {
-//    Scanner* s = new Scanner("15 / 5");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 3);
-//}
+TEST(test_interp, interp_express_sum_2) {
+    Scanner* s = new Scanner("9 + 19");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 28);
+}
+
+TEST(test_interp, interp_express_sum_3) {
+    Scanner* s = new Scanner("0  +  0");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 0);
+}
+
+TEST(test_interp, interp_express_sub_1) {
+    Scanner* s = new Scanner(" 2 - 1  ");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 1);
+}
+
+TEST(test_interp, interp_express_sub_2) {
+    Scanner* s = new Scanner("15  -  5");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 10);
+}
+
+TEST(test_interp, interp_express_mult_1) {
+    Scanner* s = new Scanner("2 * 14");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 28);
+}
+
+TEST(test_interp, interp_express_mult_2) {
+    Scanner* s = new Scanner("15 * 5");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 75);
+}
+
+TEST(test_interp, interp_express_div_1) {
+    Scanner* s = new Scanner(" 28 /  14");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 2);
+}
+
+TEST(test_interp, interp_express_div_2) {
+    Scanner* s = new Scanner("15 / 5");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 3);
+}
 
 ////////////////////////////////
 //// MARK: Interpreter_OperationStr
 ////////////////////////////////
-//
-//TEST(test_interp, interp_express_short_1) {
-//    Scanner* s = new Scanner("3");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 3);
-//}
-//
-//TEST(test_interp, interp_express_long_1) {
-//    Scanner* s = new Scanner("15 + 5 - 6 + 11 - 13 - 2");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 10);
-//}
-//
-//TEST(test_interp, interp_express_long_2) {
-//    Scanner* s = new Scanner("10 * 4  * 2 * 3 / 8");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 30);
-//}
-//
-//TEST(test_interp, interp_express_mix_1) {
-//    Scanner* s = new Scanner("14 + 2 * 3 - 6 / 2");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 17);
-//}
-//
-//TEST(test_interp, interp_express_paren_1) {
-//    Scanner* s = new Scanner("(1 + 1)");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 2);
-//}
-//
-//TEST(test_interp, interp_express_paren_2) {
-//    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 22);
-//}
-//
-//TEST(test_interp, interp_express_paren_3) {
-//    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1)) / (2 + 3) - 5 - 3 + (8)");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 10);
-//}
-//
-//TEST(test_interp, interp_express_paren_4) {
-//    Scanner* s = new Scanner("7 + (((3 + 2)))");
-//    Parser*  p = new Parser(s);
-//    Interpreter myInterp(p);
-//    ASSERT_EQ(myInterp.interpret(), 12);
-//}
+
+TEST(test_interp, interp_express_short_1) {
+    Scanner* s = new Scanner("3");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 3);
+}
+
+TEST(test_interp, interp_express_long_1) {
+    Scanner* s = new Scanner("15 + 5 - 6 + 11 - 13 - 2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 10);
+}
+
+TEST(test_interp, interp_express_long_2) {
+    Scanner* s = new Scanner("10 * 4  * 2 * 3 / 8");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 30);
+}
+
+TEST(test_interp, interp_express_mix_1) {
+    Scanner* s = new Scanner("14 + 2 * 3 - 6 / 2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 17);
+}
+
+TEST(test_interp, interp_express_paren_1) {
+    Scanner* s = new Scanner("(1 + 1)");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 2);
+}
+
+TEST(test_interp, interp_express_paren_2) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1))");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 22);
+}
+
+TEST(test_interp, interp_express_paren_3) {
+    Scanner* s = new Scanner("7 + 3 * (10 / (12 / (3 + 1) - 1)) / (2 + 3) - 5 - 3 + (8)");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 10);
+}
+
+TEST(test_interp, interp_express_paren_4) {
+    Scanner* s = new Scanner("7 + (((3 + 2)))");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 12);
+}
 
 //////////////////////////////
 // MARK: Interpreter_UnaryOperation
@@ -274,9 +274,9 @@ TEST(test_parser, parser_parse_5) {
 
 
 //TEST(test_interp, interp_express_UnOp_1) {
-//    Scanner* s = new Scanner("++0");
+//    Scanner* s = new Scanner("--2");
 //    Parser*  p = new Parser(s);
 //    Interpreter myInterp(p);
-//    ASSERT_THROW(myInterp.interpret(), std::invalid_argument);
+//    ASSERT_EQ(myInterp.interpret(), 2);
 //}
 
