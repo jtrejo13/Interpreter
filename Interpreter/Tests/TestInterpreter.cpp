@@ -273,9 +273,37 @@ TEST(test_interp, interp_express_paren_4) {
 //////////////////////////////
 
 TEST(test_interp, interp_express_UnOp_1) {
+    Scanner* s = new Scanner("- 2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), -2);
+}
+
+TEST(test_interp, interp_express_UnOp_2) {
+    Scanner* s = new Scanner("+ 2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 2);
+}
+
+TEST(test_interp, interp_express_UnOp_3) {
     Scanner* s = new Scanner("--2");
     Parser*  p = new Parser(s);
     Interpreter myInterp(p);
     ASSERT_EQ(myInterp.interpret(), 2);
+}
+
+TEST(test_interp, interp_express_UnOp_4) {
+    Scanner* s = new Scanner("5 - - - + - 3");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 8);
+}
+
+TEST(test_interp, interp_express_UnOp_5) {
+    Scanner* s = new Scanner("5 - - - + - (3 + 4) - +2");
+    Parser*  p = new Parser(s);
+    Interpreter myInterp(p);
+    ASSERT_EQ(myInterp.interpret(), 10);
 }
 
