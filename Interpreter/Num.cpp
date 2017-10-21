@@ -8,11 +8,3 @@
 
 #include "Num.hpp"
 
-Num::Num() {
-    _token = Token();
-}
-
-Num::Num(Token t) {
-    _token = t;
-}
-

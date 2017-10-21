@@ -14,46 +14,18 @@
 
 enum TokenType {Integer, Plus, Minus, Mul, Div, LParen, RParen, eof};
 
-struct Type {
-    TokenType t;
-    std::string toString() {
-        std::string ans;
-        switch(t) {
-            case Integer:
-                ans = "INTEGER";
-                break;
-            case Plus:
-            case Minus:
-            case Mul:
-            case Div:
-                ans = "BINARY_OP";
-                break;
-            case LParen:
-            case RParen:
-                ans = "PAREN";
-                break;
-            case eof:
-                ans = "EOF";
-                break;
-            default:
-                ans = "UNDEF";
-                break;
-        }
-        return ans;
-    }
-};
-
 class Token {
     /* *
      * @brief token type: INTEGER, PLUS, MINUS, MUL, DIV, LPAREN, RPAREN, or EOF
      */
-    Type _type;
+    TokenType _type;
     
     /* *
      * @brief token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', '-',
      * '*', '/', '(', ')', or None
      */
     std::string _value;
+    
 public:
     // Constructors
     Token();
@@ -80,6 +52,8 @@ public:
      */
     std::string getValue();
 };
+
+std::string typeToString(TokenType T);
 
 #endif /* Token_hpp */
 

@@ -234,10 +234,15 @@ TEST(test_interp, interp_express_paren_4) {
     ASSERT_EQ(myInterp.interpret(), 12);
 }
 
-TEST(test_interp, interp_express_exept_4) {
-    Scanner* s = new Scanner("++0");
-    Parser*  p = new Parser(s);
-    Interpreter myInterp(p);
-    ASSERT_THROW(myInterp.interpret(), std::invalid_argument);
-}
+//////////////////////////////
+// MARK: Interpreter_UnaryOperation
+//////////////////////////////
+
+
+//TEST(test_interp, interp_express_UnOp_1) {
+//    Scanner* s = new Scanner("++0");
+//    Parser*  p = new Parser(s);
+//    Interpreter myInterp(p);
+//    ASSERT_THROW(myInterp.interpret(), std::invalid_argument);
+//}
 

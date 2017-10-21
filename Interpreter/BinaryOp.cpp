@@ -8,14 +8,4 @@
 
 #include "BinaryOp.hpp"
 
-BinaryOp::BinaryOp() {
-    //nothing to do
-}
-
-BinaryOp::BinaryOp(Num* left, Token op, Num* right) {
-    _left  = left;
-    _op    = op;
-    _right = right;
-}
-
 

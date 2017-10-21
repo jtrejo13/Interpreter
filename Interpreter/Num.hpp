@@ -14,11 +14,9 @@
 #include "Token.hpp"
 
 class Num : public Node {
-    Token _token;
+
 public:
-    Num();
-    Num(Token t);
-    //int getValue();
+
 };
 
 #endif /* Num_hpp */

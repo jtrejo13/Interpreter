@@ -35,8 +35,7 @@ Node* Node::right() {
 }
 
 std::string Node::getType() {
-    Type t = {_token.getType()};
-    return t.toString();
+    return typeToString(_token.getType());
 }
 
 Token Node::getToken() {

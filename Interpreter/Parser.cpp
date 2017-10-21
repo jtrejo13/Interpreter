@@ -49,6 +49,13 @@ Node* Parser::term() {
 
 Node* Parser::factor() {
     Token token = _currentToken;
+//    if (token.getType() == Plus) {
+//        eat(Plus);
+//        return new Node(token);
+//    } else if (token.getType() == Minus) {
+//        eat(Minus);
+//        return new Node(token);
+//    } else
     if (token.getType() == Integer) {
         eat(Integer);
         return new Node(token);

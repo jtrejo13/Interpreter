@@ -12,20 +12,20 @@
 #include "Token.hpp"
 
 Token::Token() {
-    _type = {eof};
+    _type = eof;
     _value = "None";
 }
 
-Token::Token(TokenType t, std::string value) {
-    _type = {t};
+Token::Token(TokenType T, std::string value) {
+    _type = T;
     _value = value;
 }
 
 std::string Token::toString() {
     std::ostringstream out;
     out << "Token(";
-    out << _type.toString();
-    if (_type.t != eof) {
+    out << typeToString(_type);
+    if (_type != eof) {
         out << ", " << _value << ")";
     } else {
         out << ", None)";  // Handle eof
@@ -34,11 +34,37 @@ std::string Token::toString() {
 }
 
 TokenType Token::getType() {
-    return _type.t;
+    return _type;
 }
 
 std::string Token::getValue() {
     return _value;
+}
+
+std::string typeToString(TokenType T) {
+    std::string ans;
+    switch(T) {
+        case Integer:
+            ans = "INTEGER";
+            break;
+        case Plus:
+        case Minus:
+        case Mul:
+        case Div:
+            ans = "BINARY_OP";
+            break;
+        case LParen:
+        case RParen:
+            ans = "PAREN";
+            break;
+        case eof:
+            ans = "EOF";
+            break;
+        default:
+            ans = "UNDEF";
+            break;
+    }
+    return ans;
 }
 
 #endif

@@ -15,13 +15,9 @@
 #include "Num.hpp"
 
 class BinaryOp : public Node {
-    Num* _left;
-    Num* _right;
-    Token _op;
     
 public:
-    BinaryOp();
-    BinaryOp(Num* left, Token op, Num* right);
+
 };
 
 #endif /* BinaryOp_hpp */
