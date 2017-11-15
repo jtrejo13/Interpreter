@@ -1,5 +1,5 @@
-# Interpreter
-Simple mathematical expression interpreter implemented in C++
+# Mathematical Expression Evaluator
+Simple mathematical expression evaluator implemented in C++
 
 ## Main classes:
 * Token.cpp
